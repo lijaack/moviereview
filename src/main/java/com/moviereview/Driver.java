@@ -1,9 +1,10 @@
-package com.jc3;
+package com.moviereview;
+
 
 import java.sql.Date;
 
-import com.jc3.Model.User;
-import com.jc3.Service.UserService;
+import com.moviereview.Model.User;
+import com.moviereview.Service.UserService;
 
 public class Driver {
 	public static void main(String[] args) {

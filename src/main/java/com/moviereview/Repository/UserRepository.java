@@ -1,8 +1,8 @@
-package com.jc3.Repository;
+package com.moviereview.Repository;
 
 import java.util.List;
 
-import com.jc3.Model.User;
+import com.moviereview.Model.User;
 
 public interface UserRepository {
 	public User getUser(String username);

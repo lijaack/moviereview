@@ -1,4 +1,4 @@
-package com.jc3.util;
+package com.moviereview.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

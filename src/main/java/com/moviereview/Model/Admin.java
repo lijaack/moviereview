@@ -1,4 +1,4 @@
-package com.jc3.Model;
+package com.moviereview.Model;
 
 public class Admin {
 	private int id;

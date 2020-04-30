@@ -17,7 +17,7 @@ create Table reviews(
     review varchar(1500) not null,
     movieScore integer not null,
     dateCreated date not null,
-    imdbID varchar(16) not null,
+    movieID varchar(16) not null,
     userID integer not null,
     foreign key (userID) references users(id)
 );

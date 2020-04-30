@@ -1,10 +1,10 @@
-package com.jc3.Service;
+package com.moviereview.Service;
 
 import java.util.List;
 
-import com.jc3.Model.User;
-import com.jc3.Repository.UserRepository;
-import com.jc3.Repository.UserRepositoryImpl;
+import com.moviereview.Model.User;
+import com.moviereview.Repository.UserRepository;
+import com.moviereview.Repository.UserRepositoryImpl;
 
 public class UserService {
 	

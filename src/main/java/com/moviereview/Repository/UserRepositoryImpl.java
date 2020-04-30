@@ -1,4 +1,4 @@
-package com.jc3.Repository;
+package com.moviereview.Repository;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.jc3.Model.User;
-import com.jc3.util.HibernateConfiguration;
+import com.moviereview.Model.User;
+import com.moviereview.util.HibernateConfiguration;
 
 public class UserRepositoryImpl implements UserRepository {
 
