@@ -7,7 +7,7 @@ Create Table users(
     country varchar(16) not null,
     gender varchar(16)
 );
-create Table admin(
+create Table admins(
     id serial PRIMARY key,
     username varchar(16) PRIMARY KEY,
     password varchar(16) not null

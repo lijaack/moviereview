@@ -31,17 +31,17 @@ public class User implements Serializable{
 	@Column
 	private int id;
 	@Id
-	@Column
+	@Column(name="username")
     private String username;
-	@Column
+	@Column(name="password")
     private String password;
-	@Column
+	@Column(name="isCritic")
 	private boolean isCritic;
-	@Column
+	@Column(name="birthday")
 	private Date birthday;
-	@Column
+	@Column(name="country")
     private String country;
-	@Column
+	@Column(name="gender")
     private String gender;
 	@OneToMany(mappedBy="user", cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	private List<Review> reviews;

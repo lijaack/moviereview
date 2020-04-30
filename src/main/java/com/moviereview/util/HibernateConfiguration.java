@@ -17,7 +17,6 @@ public class HibernateConfiguration {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 
