@@ -1,6 +1,6 @@
 Create Table users(
     id serial PRIMARY KEY,
-    username varchar(16) not null,
+    username varchar(16) PRIMARY KEY,
     password varchar(16) not null,
     isCritic boolean not null,
     birthday date not null,
@@ -9,7 +9,7 @@ Create Table users(
 );
 create Table admin(
     id serial PRIMARY key,
-    username varchar(16) not null,
+    username varchar(16) PRIMARY KEY,
     password varchar(16) not null
 );
 create Table reviews(
