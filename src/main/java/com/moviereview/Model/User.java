@@ -43,7 +43,7 @@ public class User implements Serializable{
     private String country;
 	@Column(name="gender")
     private String gender;
-	@OneToMany(mappedBy="user", cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@OneToMany(mappedBy="user", cascade= {CascadeType.ALL})
 	private List<Review> reviews;
 	
     public User() {

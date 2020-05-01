@@ -14,5 +14,7 @@ public class Driver {
 		User user = new User("mrmovie", "ilovemovies", true, date, "United States", "Male");
 		
 		userService.newUser(user);
+		System.out.println(System.getenv("url"));
+		System.out.println(System.getenv("username"));
 	}
 }
