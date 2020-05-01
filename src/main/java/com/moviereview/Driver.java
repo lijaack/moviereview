@@ -10,11 +10,11 @@ public class Driver {
 	public static void main(String[] args) {
 		UserService userService = new UserService();
 		
-		Date date = new Date(3900, 1, 15);
+		Date date = new Date(2000, 13, 22);
 		User user = new User("mrmovie", "ilovemovies", true, date, "United States", "Male");
 		
-		userService.newUser(user);
-		System.out.println(System.getenv("url"));
-		System.out.println(System.getenv("username"));
+		//userService.newUser(user);
+		
+		userService.updateUser(user);
 	}
 }

@@ -1,5 +1,6 @@
 package com.moviereview.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -20,7 +21,7 @@ public class UserRepositoryImpl implements UserRepository {
 		try {
 			s = HibernateConfiguration.getSession();
 			tx = s.beginTransaction();
-			user = s.createQuery("FROM users WHERE username = :username", User.class).setParameter("username", username).getSingleResult();
+			user = s.createQuery("FROM User WHERE username = :username", User.class).setParameter("username", username).getSingleResult();
 			
 			tx.commit();
 		}catch(HibernateException e) {
@@ -35,14 +36,45 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users = new ArrayList<>();
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateConfiguration.getSession();
+			tx = s.beginTransaction();
+			users = s.createQuery("FROM User", User.class).getResultList();
+			
+			tx.commit();
+		}catch(HibernateException e) {
+			tx.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		
+		return users;
 	}
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
+		Session s = null;
+		Transaction tx = null;
 		
+		
+		try {
+			s = HibernateConfiguration.getSession();
+			tx = s.beginTransaction();
+			
+			s.update(user);
+			
+			tx.commit();
+		}catch(HibernateException e) {
+			tx.rollback();
+			e.printStackTrace();
+		}finally {
+			s.close();
+		}
 	}
 
 	@Override

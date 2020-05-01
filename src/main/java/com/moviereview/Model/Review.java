@@ -33,7 +33,7 @@ public class Review {
     private int userID;
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
 			 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="userID")
+	@JoinColumn(name="user")
 	private User user;
 
     public Review(int id, String review, int movieScore, Date dateCreated, String imdbID, int userID) {
