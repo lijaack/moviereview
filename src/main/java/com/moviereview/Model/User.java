@@ -16,9 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.OneToMany;
 
 @Entity
-
 @Table(name = "users")
-
 public class User implements Serializable{
 	/**
 	 * 
@@ -30,8 +28,7 @@ public class User implements Serializable{
 	@SequenceGenerator(name="user_id_seq", allocationSize = 1) 
 	@Column
 	private int id;
-	@Id
-	@Column(name="username")
+	@Column(name="username", unique=true)
     private String username;
 	@Column(name="password")
     private String password;
