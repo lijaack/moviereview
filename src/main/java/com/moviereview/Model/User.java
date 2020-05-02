@@ -16,9 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.OneToMany;
 
 @Entity
-
 @Table(name = "users")
-
 public class User implements Serializable{
 	/**
 	 * 
@@ -30,20 +28,19 @@ public class User implements Serializable{
 	@SequenceGenerator(name="user_id_seq", allocationSize = 1) 
 	@Column
 	private int id;
-	@Id
-	@Column
+	@Column(name="username", unique=true)
     private String username;
-	@Column
+	@Column(name="password")
     private String password;
-	@Column
+	@Column(name="isCritic")
 	private boolean isCritic;
-	@Column
+	@Column(name="birthday")
 	private Date birthday;
-	@Column
+	@Column(name="country")
     private String country;
-	@Column
+	@Column(name="gender")
     private String gender;
-	@OneToMany(mappedBy="user", cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@OneToMany(mappedBy="user", cascade= {CascadeType.ALL})
 	private List<Review> reviews;
 	
     public User() {
