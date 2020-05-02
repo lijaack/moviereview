@@ -46,6 +46,18 @@ public class User implements Serializable{
     public User() {
     	
     }
+
+    public User(int id, String username, String password, boolean isCritic, Date birthday, String country,
+			String gender) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.isCritic = isCritic;
+		this.birthday = birthday;
+		this.country = country;
+		this.gender = gender;
+	}
     
     public User( String username, String password, boolean isCritic, Date birthday, String country,
 			String gender) {
@@ -144,7 +156,7 @@ public class User implements Serializable{
 			reviews = new ArrayList<>();
 		}
 		reviews.add(tempReview);
-		tempReview.setUser(this);
+		tempReview.setUserID(this.id);
 	}
 
 	@Override

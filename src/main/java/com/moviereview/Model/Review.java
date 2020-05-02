@@ -33,12 +33,25 @@ public class Review {
     private int userID;
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
 			 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="user")
+	@JoinColumn(name="users")
 	private User user;
-
+	
+	public Review() {
+		
+	}
+	
     public Review(int id, String review, int movieScore, Date dateCreated, String imdbID, int userID) {
 		super();
 		this.id = id;
+		this.review = review;
+		this.movieScore = movieScore;
+		this.dateCreated = dateCreated;
+		this.movieID = imdbID;
+		this.userID = userID;
+	}
+    
+    public Review( String review, int movieScore, Date dateCreated, String imdbID, int userID) {
+		super();
 		this.review = review;
 		this.movieScore = movieScore;
 		this.dateCreated = dateCreated;
