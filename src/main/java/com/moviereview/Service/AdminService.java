@@ -3,12 +3,16 @@ package com.moviereview.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.moviereview.Model.Admin;
 import com.moviereview.Model.User;
 import com.moviereview.Repository.AdminRepository;
 import com.moviereview.Repository.UserRepository;
 
+
+
+@Service
 public class AdminService {
 	
 	@Autowired
@@ -20,10 +24,10 @@ public class AdminService {
 	public Admin getAdmin(String username) {
 		return this.adminRepository.getAdmin(username);
 	}
-	public List<Admin> getAllUsers(){
+	public List<Admin> getAllAdmins(){
 		return this.adminRepository.getAllAdmins();
 	}
-	public void updateUser(Admin admin) {
+	public void updateAdmin(Admin admin) {
 		this.adminRepository.updateAdmin(admin);
 	}
 	public void newAdmin(Admin admin) {

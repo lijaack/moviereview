@@ -6,10 +6,13 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import com.moviereview.Model.Review;
 import com.moviereview.util.HibernateConfiguration;
 
+
+@Repository
 public class ReviewRepositoryImpl implements ReviewRepository {
 
 	@Override
