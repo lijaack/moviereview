@@ -31,4 +31,8 @@ public class UserService {
 	public void newUser(User user) {
 		this.userRepository.newUser(user);
 	}
+	public void userLogin(String username, String password) {
+		this.userRepository.userLogin(username, password);
+	};
+
 }

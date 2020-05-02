@@ -156,7 +156,7 @@ public class User implements Serializable{
 			reviews = new ArrayList<>();
 		}
 		reviews.add(tempReview);
-		tempReview.setUserID(this.id);
+		tempReview.setUser(this);
 	}
 
 	@Override
