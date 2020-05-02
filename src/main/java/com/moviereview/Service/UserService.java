@@ -26,12 +26,6 @@ public class UserService {
 		return this.userRepository.getAllUsers();
 	}
 	public void updateUser(User user) {
-		UserRepositoryImpl repository = new UserRepositoryImpl();
-		//get the user's id (primary key) in order to perform the update
-		int id = repository.getUser(user.getUsername()).getId();
-		
-		user.setId(id);
-		
 		this.userRepository.updateUser(user);
 	}
 	public void newUser(User user) {
