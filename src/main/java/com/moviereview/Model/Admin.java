@@ -23,18 +23,25 @@ public class Admin implements Serializable{
 	@SequenceGenerator(name="admin_id_seq", allocationSize = 1) 
 	@Column(name="id")
 	private int id;
-	@Column(name="username")
+	@Column(name="username", unique=true)
     private String username;
 	@Column(name="password")
     private String password;
 	
+	public Admin() {
+		
+	}
     public Admin(int id, String username, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 	}
-
+    public Admin(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
 	public int getId() {
 		return id;
 	}

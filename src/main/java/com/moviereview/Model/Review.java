@@ -36,11 +36,11 @@ public class Review implements Serializable{
     private String movieID;
 	@Column(name="userID")
     private int userID;
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-			 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="users")
-	private User user;
-	
+//	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+//			 CascadeType.DETACH, CascadeType.REFRESH})
+//	@JoinColumn(name="users")
+//	private User user;
+
 	public Review() {
 		
 	}
@@ -111,17 +111,17 @@ public class Review implements Serializable{
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 	@Override
 	public String toString() {
 		return "Review [id=" + id + ", review=" + review + ", movieScore=" + movieScore + ", dateCreated=" + dateCreated
-				+ ", movieID=" + movieID + ", userID=" + userID + ", user=" + user + "]";
+				+ ", movieID=" + movieID + ", userID=" + userID + "]";
 	}
     
 }

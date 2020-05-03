@@ -9,7 +9,6 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import com.moviereview.Model.Admin;
-import com.moviereview.Model.User;
 import com.moviereview.util.HibernateConfiguration;
 
 @Repository
@@ -33,14 +32,47 @@ public class AdminRepositoryImpl implements AdminRepository{
 
 	@Override
 	public Admin getAdmin(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		Admin admin = null;
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateConfiguration.getSession();
+			tx = s.beginTransaction();
+			admin = s.createQuery("FROM Admin WHERE username = :username", Admin.class).setParameter("username", username).getSingleResult();
+			
+			tx.commit();
+		}catch(HibernateException e) {
+			tx.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		
+		return admin;
+
 	}
 
 	@Override
 	public Admin adminLogin(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		Admin admin = null;
+		Session s = null;
+		Transaction tx = null;
+		
+		try {
+			s = HibernateConfiguration.getSession();
+			tx = s.beginTransaction();
+			admin = s.createQuery("FROM Admin WHERE username = :username and password =:password", Admin.class).setParameter("username", username).setParameter("password", password).getSingleResult();
+			
+			tx.commit();
+		}catch(HibernateException e) {
+			tx.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		
+		return admin;
 	}
 
 	@Override
@@ -51,7 +83,7 @@ public class AdminRepositoryImpl implements AdminRepository{
 		try {
 			s = HibernateConfiguration.getSession();
 			tx = s.beginTransaction();
-			s.save(admin);
+			s.update(admin);
 			tx.commit();
 		}catch(HibernateException e) {
 			tx.rollback();
@@ -71,7 +103,7 @@ public class AdminRepositoryImpl implements AdminRepository{
 		try {
 			s = HibernateConfiguration.getSession();
 			tx = s.beginTransaction();
-			admins = s.createQuery("FROM admins", Admin.class).getResultList();
+			admins = s.createQuery("FROM Admin", Admin.class).getResultList();
 			
 			tx.commit();
 		}catch(HibernateException e) {
