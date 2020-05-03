@@ -2,11 +2,17 @@ package com.moviereview.Service;
 
 import java.util.List;
 
-import com.moviereview.Model.Review;
-import com.moviereview.Repository.ReviewRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.moviereview.Model.Review;
+import com.moviereview.Repository.ReviewRepository;
+
+@Service
 public class ReviewService {
-	ReviewRepositoryImpl reviewRepository = new ReviewRepositoryImpl();
+	
+	@Autowired
+	ReviewRepository reviewRepository;
 	
 	public void newReview(Review review) {
 		this.reviewRepository.insertReview(review);
@@ -23,10 +29,4 @@ public class ReviewService {
 	public List<Review> getReviewsByUserId(int id) {
 		return this.reviewRepository.getReviewsByUserId(id);
 	}
-	
-	
-=======
-public class ReviewService {
-
->>>>>>> ac545a1b3b450477d1ddbab63d1723d5fa254dcc
 }

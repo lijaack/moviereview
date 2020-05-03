@@ -9,4 +9,5 @@ public interface UserRepository {
 	public List<User> getAllUsers();
 	public void updateUser(User user);
 	public void newUser(User user);
+	public User userLogin(String username, String password);
 }

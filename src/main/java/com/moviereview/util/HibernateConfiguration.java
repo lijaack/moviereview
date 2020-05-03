@@ -11,11 +11,7 @@ public class HibernateConfiguration {
 	public static Session getSession() {
 		try {
 			if (sessionFactory == null) {
-//				sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-				sessionFactory = new Configuration().configure()
-						.setProperty("hibernate.connection.url", System.getenv("url"))
-						.setProperty("hibernate.connection.username", System.getenv("user"))
-						.setProperty("hibernate.connection.password", System.getenv("password")).buildSessionFactory();
+				sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 			}
 			return sessionFactory.getCurrentSession();
 		} catch (HibernateException e) {

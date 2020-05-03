@@ -1,5 +1,6 @@
 package com.moviereview.Model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,7 +16,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="reviews")
-public class Review {
+public class Review implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id 
 	@GeneratedValue(generator = "review_id_seq", strategy = GenerationType.AUTO) 
 	@SequenceGenerator(name="review_id_seq", allocationSize = 1) 
