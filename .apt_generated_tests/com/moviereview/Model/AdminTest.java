@@ -13,7 +13,7 @@ class AdminTest {
 
 	@RunWith(JUnitPlatform.class)
 	@TestInstance(Lifecycle.PER_CLASS)
-	class AccountTestGet {
+	class AdminTestGet {
 		
 		Admin admin;
 		
