@@ -1,5 +1,6 @@
 package com.moviereview.Model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,7 +16,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="reviews")
-public class Review {
+public class Review implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id 
 	@GeneratedValue(generator = "review_id_seq", strategy = GenerationType.AUTO) 
 	@SequenceGenerator(name="review_id_seq", allocationSize = 1) 
@@ -31,14 +36,27 @@ public class Review {
     private String movieID;
 	@Column(name="userID")
     private int userID;
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-			 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="user")
-	private User user;
+//	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+//			 CascadeType.DETACH, CascadeType.REFRESH})
+//	@JoinColumn(name="users")
+//	private User user;
 
+	public Review() {
+		
+	}
+	
     public Review(int id, String review, int movieScore, Date dateCreated, String imdbID, int userID) {
 		super();
 		this.id = id;
+		this.review = review;
+		this.movieScore = movieScore;
+		this.dateCreated = dateCreated;
+		this.movieID = imdbID;
+		this.userID = userID;
+	}
+    
+    public Review( String review, int movieScore, Date dateCreated, String imdbID, int userID) {
+		super();
 		this.review = review;
 		this.movieScore = movieScore;
 		this.dateCreated = dateCreated;
@@ -93,17 +111,17 @@ public class Review {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 	@Override
 	public String toString() {
 		return "Review [id=" + id + ", review=" + review + ", movieScore=" + movieScore + ", dateCreated=" + dateCreated
-				+ ", movieID=" + movieID + ", userID=" + userID + ", user=" + user + "]";
+				+ ", movieID=" + movieID + ", userID=" + userID + "]";
 	}
     
 }

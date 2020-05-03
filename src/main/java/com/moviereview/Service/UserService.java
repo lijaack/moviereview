@@ -2,16 +2,20 @@ package com.moviereview.Service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.moviereview.Model.User;
 import com.moviereview.Repository.UserRepository;
-import com.moviereview.Repository.UserRepositoryImpl;
 
+
+@Service
 public class UserService {
 	
-	UserRepository  userRepository;
+	@Autowired
+	UserRepository userRepository;
 	
 	public UserService() {
-		this.userRepository = new UserRepositoryImpl();
 	}
 	
 	public User getUser(String username) {
@@ -21,15 +25,13 @@ public class UserService {
 		return this.userRepository.getAllUsers();
 	}
 	public void updateUser(User user) {
-		UserRepositoryImpl repository = new UserRepositoryImpl();
-		//get the user's id (primary key) in order to perform the update
-		int id = repository.getUser(user.getUsername()).getId();
-		
-		user.setId(id);
-		
 		this.userRepository.updateUser(user);
 	}
 	public void newUser(User user) {
 		this.userRepository.newUser(user);
 	}
+	public void userLogin(String username, String password) {
+		this.userRepository.userLogin(username, password);
+	};
+
 }
