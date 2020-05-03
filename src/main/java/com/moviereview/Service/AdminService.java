@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.moviereview.Model.Admin;
-import com.moviereview.Model.User;
 import com.moviereview.Repository.AdminRepository;
-import com.moviereview.Repository.UserRepository;
 
 
 

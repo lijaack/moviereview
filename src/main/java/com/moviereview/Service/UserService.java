@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.moviereview.Model.User;
 import com.moviereview.Repository.UserRepository;
-import com.moviereview.Repository.UserRepositoryImpl;
 
 
 @Service

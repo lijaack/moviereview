@@ -1,6 +1,8 @@
+drop schema public cascade;
+create schema public;
 Create Table users(
     id serial PRIMARY KEY,
-    username varchar(16) not null,
+    username varchar(16) unique not null,
     password varchar(16) not null,
     isCritic boolean not null,
     birthday date not null,
@@ -9,7 +11,7 @@ Create Table users(
 );
 create Table admins(
     id serial PRIMARY key,
-    username varchar(16) not null,
+    username varchar(16) unique not null,
     password varchar(16) not null
 );
 create Table reviews(
@@ -19,6 +21,7 @@ create Table reviews(
     dateCreated date not null,
     movieID varchar(16) not null,
     userID integer not null,
-    foreign key (userID) references users(id)
+    foreign key (userID) references users(id),
+    constraint userReview unique (userID, movieID)
 );
 
