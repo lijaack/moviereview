@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MovieService {
-  private trendingMovie = 'https://api.themoviedb.org/3/trending/all/day?api_key=24991af107f15c42f95f9e9b1f7073b6'; 
+  private trendingMovie = 'https://api.themoviedb.org/3/trending/movie/week?api_key=24991af107f15c42f95f9e9b1f7073b6'; 
   constructor(private http: HttpClient) { }
   
   getTopMovies():Observable<Movie[]>{

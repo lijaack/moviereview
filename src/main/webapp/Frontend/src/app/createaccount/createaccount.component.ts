@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {User} from '../interfaces/user'
+import {User} from '../interfaces/user';
+import {UserService} from '../user.service'
+
 @Component({
   selector: 'app-createaccount',
   templateUrl: './createaccount.component.html',
@@ -16,7 +18,7 @@ export class CreateaccountComponent implements OnInit {
   day:string;
   year:string;
   newUser:User;
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
     
@@ -33,6 +35,9 @@ export class CreateaccountComponent implements OnInit {
         gender: this.gender,
         birthday: this.year + "-" + this.month + "-" +this.day
       }
+      this.userService.createUser(this.newUser).subscribe((user)=> {
+        console.log(user)
+      });
     }
     console.log(this.newUser)
   }
