@@ -9,7 +9,12 @@ import { UserAccountComponent } from './account-user/user-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateaccountComponent } from './createaccount/createaccount.component';
 import { SearchMoviesComponent } from './search-movies/search-movies.component';
-
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { HttpClientModule }    from '@angular/common/http';
+import { MovieComponent } from './movie/movie.component';
+import { ReviewComponent } from './review/review.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,11 +23,17 @@ import { SearchMoviesComponent } from './search-movies/search-movies.component';
     DashboardComponent,
     CreateaccountComponent,
     SearchMoviesComponent,
+    NavbarComponent,
+    HomeComponent,
+    MovieCardComponent,
+    MovieComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
