@@ -53,18 +53,43 @@ class ReviewRepoTest {
 		Assertions.assertEquals(1, dao.getReviewsByUserId(7).size());
 		Assertions.assertEquals(7, dao.getReviewsByUserId(7).get(0).getUserID());
 	}
-//	
+	@Test
+	public void testGetReviewByMovieID() {
+		List<Review> MYID = Arrays.asList(
+				new Review(1, "this is also a review", 6, dateA, "MYID", 8),
+				new Review(2, "this is MY review", 7, date, "MYID", 9));
+		Mockito.when(dao.getReviewsByMovieId("MYID")).thenReturn(
+				MYID);
+
+		Assertions.assertEquals(2, dao.getReviewsByMovieId("MYID").size());
+		Assertions.assertEquals(8, dao.getReviewsByMovieId("MYID").get(0).getUserID());
+		Assertions.assertEquals("this is MY review", dao.getReviewsByMovieId("MYID").get(1).getReview());
+	}
+	
 //	@Test
-//	public void testGetAllAdmins() {
-//		List<Admin> requests = Arrays.asList(
-//				new Admin(0, "admin1", "password"),
-//				new Admin(1, "admin2", "password"));
-//		Mockito.when(dao.getAllAdmins()).thenReturn(
-//				requests);
-//		System.out.println(requests);
-//		Assertions.assertEquals(2,dao.getAllAdmins().size());
-//		Assertions.assertEquals("admin1",dao.getAllAdmins().get(0).getUsername());
-//		Assertions.assertEquals("admin2",dao.getAllAdmins().get(1).getUsername());
+//	public void testUpdateReview() {
+//		List<Review> MYID = Arrays.asList(
+//				new Review(1, "this is also a review", 6, dateA, "MYID", 8),
+//				new Review(2, "this is MY review", 7, date, "MYID", 9));
+//		Review review;
+//		Mockito.when(dao.updateReview(review).getReviewsByMovieId("MYID")).thenReturn(
+//				MYID);
+//
+//		Assertions.assertEquals(2, dao.getReviewsByMovieId("MYID").size());
+//		Assertions.assertEquals(8, dao.getReviewsByMovieId("MYID").get(0).getUserID());
+//		Assertions.assertEquals("this is MY review", dao.getReviewsByMovieId("MYID").get(1).getReview());
 //	}
+//	@Test
+//	public void testInsertReview() {
+//		List<Review> MYID = Arrays.asList(new Review(0, "this is a review", 5, date, "imdbID", 7));
+//		Review review = new Review(3, "this is the insert review", 7, date, "imdbID", 8);
+//		MYID.add(review);
+//		Mockito.when(dao.getReviewsByUserId(3)).thenReturn(
+//				MYID);
+//
+//		Assertions.assertEquals(1, dao.getReviewsByUserId(3).size());
+//		Assertions.assertEquals("this is the insert review", dao.getReviewsByUserId(3).get(0).getReview());
+//	}
+//	
 
 }

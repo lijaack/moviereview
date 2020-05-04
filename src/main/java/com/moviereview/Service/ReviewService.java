@@ -22,7 +22,7 @@ public class ReviewService {
 		this.reviewRepository.updateReview(review);
 	}
 	
-	public List<Review> getReviewsByMovieId(int id) {
+	public List<Review> getReviewsByMovieId(String id) {
 		return this.reviewRepository.getReviewsByMovieId(id);
 	}
 	
