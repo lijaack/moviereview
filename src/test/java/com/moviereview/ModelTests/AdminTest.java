@@ -1,4 +1,4 @@
-package com.moviereview.Model;
+package com.moviereview.ModelTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,12 +9,11 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.runner.RunWith;
 
+import com.moviereview.Model.Admin;
+
+@TestInstance(Lifecycle.PER_CLASS)
 class AdminTest {
 
-	
-	@TestInstance(Lifecycle.PER_CLASS)
-	class AdminTestGet {
-		
 		Admin admin;
 		
 		@BeforeAll
@@ -36,8 +35,7 @@ class AdminTest {
 		public void testGetID(){
 			Assertions.assertEquals(0, admin.getId());
 		}
-		
 	
 
 	}
-}
+
