@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 
 class ReviewTest {
 
-	@RunWith(JUnitPlatform.class)
+
 	@TestInstance(Lifecycle.PER_CLASS)
 	class ReviewTestGet {
 		

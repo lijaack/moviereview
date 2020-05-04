@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 class AdminTest {
 
-	@RunWith(JUnitPlatform.class)
+	
 	@TestInstance(Lifecycle.PER_CLASS)
 	class AdminTestGet {
 		
