@@ -47,7 +47,7 @@ public class ReviewController {
 	
 	@RequestMapping(path="/getByMovieID", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public List<Review> getByMovieID(@RequestBody int id) {
+	public List<Review> getByMovieID(@RequestBody String id) { //changed to string by Colin
 		 List<Review> reviews = this.reviewService.getReviewsByMovieId(id);
 		 return reviews;
 	}
