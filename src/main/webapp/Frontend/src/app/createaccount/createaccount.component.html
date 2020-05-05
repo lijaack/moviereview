@@ -3,6 +3,13 @@
         <form class="col s12">
             <div class="row">
                 <div class="col s3"></div>
+                <div *ngIf="error" class="col s6">
+                    <p style="color:red;">{{error}}</p>
+                </div>
+                <div class="col s3"></div>
+            </div>
+            <div class="row">
+                <div class="col s3"></div>
                 <div class="input-field col s6">
                 <input [(ngModel)]="name" id="name" name="name" type="text" class="validate">
                 <label for="name">Name</label>

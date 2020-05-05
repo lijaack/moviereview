@@ -24,7 +24,6 @@ export class MovieComponent implements OnInit {
     .subscribe((movie)=> {
       this.movie = movie;
       this.image =  "https://image.tmdb.org/t/p/original"+ this.movie.poster_path;
-      console.log(this.movie)
     })
   }
   newReviewButton(){
