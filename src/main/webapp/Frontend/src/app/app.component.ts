@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from "./data.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-movie-review';
+  constructor(private data: DataService) { }
+
+  ngOnInit() {
+    if(localStorage.getItem("username") && localStorage.getItem("password")){
+      this.data.changeLogin(true);
+    }
+    else{
+      this.data.changeLogin(false);
+    }
+  }
+
+
+
 }

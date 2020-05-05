@@ -16,7 +16,7 @@ import com.moviereview.util.HibernateConfiguration;
 public class ReviewRepositoryImpl implements ReviewRepository {
 
 	@Override
-	public List<Review> getReviewsByMovieId(int id) {
+	public List<Review> getReviewsByMovieId(String id) { ///Changed to string by Colin
 		Session s = null;
 		Transaction tx = null;
 		List<Review> reviews = new ArrayList<>();
