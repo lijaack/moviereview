@@ -1,6 +1,20 @@
 <div class = "container" style="padding-top:5%">
     <div class="row">
+		<div class="col s3"></div>
+		<div class="col s6">
+			<h4><b>Create a New Account</b></h4>
+		</div>
+		<div class="col s3"></div>
+	</div>
+    <div class="row">
         <form class="col s12">
+            <div class="row">
+                <div class="col s3"></div>
+                <div *ngIf="error" class="col s6">
+                    <p style="color:red;">{{error}}</p>
+                </div>
+                <div class="col s3"></div>
+            </div>
             <div class="row">
                 <div class="col s3"></div>
                 <div class="input-field col s6">

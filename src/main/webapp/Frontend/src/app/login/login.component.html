@@ -1,24 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-<meta charset="UTF-8" />
-<title>Movie reviews</title>
-
-</head>
-<body>
-	<h1>MovieReviews Website Login</h1>
-
-	<form method="post" action="/MovieReviews/redirect">
-		<div class="grid grid-pad">
-			<label for="yourusername">Username:</label> <input type="text"
-				id="yourusername" class="form-control" name="username" required />
-			<label for="yourpassword">Password:</label> <input type="password"
-				id="yourpassword" class="form-control" name="password" required />
-			
-			<button>Login</button>
+<div class = "container" style="padding-top:5%">
+	<div class="row">
+		<div class="col s3"></div>
+		<div class="col s6">
+			<h4><b>Login</b></h4>
 		</div>
-	</form>
-	<div> <p> How Much Darker can this bank be and the answer is none. </p></div>
-</body>
-</html>
+		<div class="col s3"></div>
+	</div>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="col s3"></div>
+                <div *ngIf="error" class="col s6">
+                    <p style="color:red;">{{error}}</p>
+                </div>
+                <div class="col s3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col s3"></div>
+                <div class="input-field col s6">
+                <input [(ngModel)]="username" id="username" name="username"type="text" class="validate">
+                <label for="username">Username</label>
+                </div>
+                <div class="col s3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col s3"></div>
+                <div class="input-field col s6">
+                    <input  [(ngModel)]="password"id="password"name="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+                <div class="col s3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col s3">
+                </div>
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn" (click)="submit()">Submit</a>
+                </div>
+                <div class="col s3"></div>
+            </div>
+        </form>
+      </div>
+    
+</div>>

@@ -1,14 +1,25 @@
 
 <nav class="grey darken-4">
     <div class="nav-wrapper">
-      <a href="#">movie reviews</a>
+      <a style="padding-left: 5%" href="/"><b>movie reviews</b></a>
       <ul id="nav-mobile" class="right">
-        <li>
-            <a routerLink="login">Login</a>
-        </li>
-        <li>
-          <a  routerLink="/newUser">Create New User</a>
-      </li>
+
+        <div *ngIf="!login">
+          <li>
+              <a routerLink="login">Login</a>
+          </li>
+          <li>
+            <a  routerLink="/newUser">Create New User</a>
+          </li>
+        </div>
+        <div *ngIf="login">
+          <li>
+              <a routerLink="/dashboard">dashboard</a>
+          </li>
+          <li>
+            <a (click)="logout()">log out</a>
+          </li>
+        </div>
       </ul>
     </div>
   </nav>
