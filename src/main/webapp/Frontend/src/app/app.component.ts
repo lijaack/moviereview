@@ -11,7 +11,12 @@ export class AppComponent {
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    this.data.changeLogin(true);
+    if(localStorage.getItem("username") && localStorage.getItem("password")){
+      this.data.changeLogin(true);
+    }
+    else{
+      this.data.changeLogin(false);
+    }
   }
 
 

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import {User} from '../interfaces/user';
 import {UserService} from '../user.service'
 import { DataService } from "../data.service";
-
+import {Router} from "@angular/router"
 @Component({
   selector: 'app-createaccount',
   templateUrl: './createaccount.component.html',
@@ -20,7 +20,7 @@ export class CreateaccountComponent implements OnInit {
   year:string = "";
   newUser:User = null;
   error:string = null;
-  constructor(private userService:UserService, private data: DataService) { }
+  constructor(private userService:UserService, private data: DataService, private router: Router) { }
 
   ngOnInit() {
     
@@ -40,10 +40,11 @@ export class CreateaccountComponent implements OnInit {
       }
       this.userService.createUser(this.newUser).subscribe(
         data => {
-          //if success, store user data and state
+          //if success, store user data and reroute
+          localStorage.setItem('username', data.username);
+          localStorage.setItem('password',data.password);
           this.data.changeLogin(true);
-          console.log("data"); console.log(data)
-
+          this.router.navigate(["/dashboard"]);
         },
         error => {
           this.error=error.error; 

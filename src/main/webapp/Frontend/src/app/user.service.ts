@@ -19,4 +19,4 @@ export class UserService {
   createUser(user:User):Observable<User>{    
     return this.http.post<User>("http://localhost:8080/moviereview/user/newUser", JSON.stringify(user), this.httpOptions)
   };
-  }
+}

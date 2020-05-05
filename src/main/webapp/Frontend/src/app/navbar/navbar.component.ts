@@ -14,6 +14,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.data.currentLoginStatus.subscribe(login => {this.login = login; console.log("my login status is: " + this.login)})
   }
-  
+  logout(){
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    this.data.changeLogin(false);
+  }
 
 }
