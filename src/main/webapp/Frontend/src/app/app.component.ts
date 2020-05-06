@@ -11,14 +11,12 @@ export class AppComponent {
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    if(localStorage.getItem("username") && localStorage.getItem("password")){
+    if(localStorage.getItem("username") && localStorage.getItem("password")&& localStorage.getItem("userid")){
       this.data.changeLogin(true);
     }
     else{
       this.data.changeLogin(false);
     }
   }
-
-
 
 }
