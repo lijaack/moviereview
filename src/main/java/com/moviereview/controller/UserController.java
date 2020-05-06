@@ -6,6 +6,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -35,7 +36,10 @@ public class UserController {
 			System.out.println(user);
 			this.userService.newUser(user);
 			return userLogin(user.getUsername(), user.getPassword(), session);
-		}catch(PersistenceException e){
+		}catch(HibernateException e) {
+			e.printStackTrace();
+			return ResponseEntity.badRequest().body("cant be null");
+		}	catch(PersistenceException e){
 			return ResponseEntity.badRequest().body("username already takened");
 		}
 		
@@ -48,17 +52,16 @@ public class UserController {
 			this.userService.updateUser(user);
 	}
 	
-	@RequestMapping(path="/login", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(path="/login")
 	@ResponseBody
-	public ResponseEntity<Object> userLogin(@RequestParam String username, @RequestParam String password, HttpSession session) {
+	public ResponseEntity<Object> userLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
 		
 		try {
-			
 			User user = this.userService.getUser(username);
 			if(user.getPassword().equals(password)) {
 				session.setAttribute("username", user.getUsername());
 				session.setAttribute("userID", user.getId());
-				return ResponseEntity.status(HttpStatus.OK).body(username);
+				return ResponseEntity.status(HttpStatus.OK).body(user);
 			} else {
 				return ResponseEntity.badRequest().body("invalid Password");
 			}
