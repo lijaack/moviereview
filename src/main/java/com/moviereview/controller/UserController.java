@@ -40,7 +40,7 @@ public class UserController {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().body("cant be null");
 		}	catch(PersistenceException e){
-			return ResponseEntity.badRequest().body("username already takened");
+			return ResponseEntity.badRequest().body("username already taken");
 		}
 		
 	}

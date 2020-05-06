@@ -24,6 +24,10 @@ public class LoggingAspect {
 		
 	}
 	
+	@Pointcut("within(com.moviereview.Controller.*)")
+	public void allControllerPointCut() {
+		
+	}
 	
 	@Pointcut("within(com.moviereview.Repository.*)")
 	public void allRepositoryPointCut() {
@@ -42,6 +46,11 @@ public class LoggingAspect {
 	
 	@Before("value = allRepositoryPointCut()")
 	public void beforeRepository(JoinPoint jp) {
+		LOG.info("The" + jp.getSignature().getName() + " method is being invoked");
+	}
+	
+	@Before("value = allControllerPointCut()")
+	public void beforeController(JoinPoint jp) {
 		LOG.info("The" + jp.getSignature().getName() + " method is being invoked");
 	}
 }
