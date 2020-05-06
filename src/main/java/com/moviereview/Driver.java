@@ -4,7 +4,7 @@ package com.moviereview;
 import java.sql.Date;
 
 import com.moviereview.Model.Review;
-import com.moviereview.Service.ReviewService;
+import com.moviereview.controller.ReviewController;
 
 public class Driver {
 	public static void main(String[] args) {
@@ -19,10 +19,10 @@ public class Driver {
 		
 		Date date = new Date(2000, 13, 22);
 		
-		ReviewService reviewService = new ReviewService();
+		ReviewController reviewController = new ReviewController();
 		
 		Review review = new Review("This movie sucked", 0, date, "imdbid", 6);
-		
-		reviewService.newReview(review);
+		review.getMovieScore();
+		reviewController.newUReview(review, null);
 	}
 }

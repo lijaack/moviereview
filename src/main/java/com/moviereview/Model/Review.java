@@ -34,12 +34,12 @@ public class Review implements Serializable{
     private Date dateCreated;
 	@Column(name="movieID")
     private String movieID;
-	@Column(name="userID")
+	@Column(name="userID", unique=true)
     private int userID;
-//	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-//			 CascadeType.DETACH, CascadeType.REFRESH})
-//	@JoinColumn(name="users")
-//	private User user;
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+			 CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="users")
+	private User user;
 
 	public Review() {
 		
