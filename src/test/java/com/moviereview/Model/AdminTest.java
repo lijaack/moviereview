@@ -1,4 +1,4 @@
-package com.moviereview.ModelTests;
+package com.moviereview.Model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,8 +9,6 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.runner.RunWith;
 
-import com.moviereview.Model.Admin;
-@RunWith(JUnitPlatform.class)
 @TestInstance(Lifecycle.PER_CLASS)
 class AdminTest {
 
