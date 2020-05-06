@@ -1,4 +1,4 @@
-package com.moviereview.RepoTest;
+package RepoTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +19,6 @@ import com.moviereview.Model.Admin;
 import com.moviereview.Repository.AdminRepositoryImpl;
 
 
-@RunWith(JUnitPlatform.class)
 @TestInstance(Lifecycle.PER_CLASS)
 class AdminRepoTest {
 

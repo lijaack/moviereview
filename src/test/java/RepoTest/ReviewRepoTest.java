@@ -1,4 +1,4 @@
-package com.moviereview.RepoTest;
+package RepoTest;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,8 +19,6 @@ import org.mockito.MockitoAnnotations;
 import com.moviereview.Model.Review;
 import com.moviereview.Repository.ReviewRepositoryImpl;
 
-
-@RunWith(JUnitPlatform.class)
 @TestInstance(Lifecycle.PER_CLASS)
 class ReviewRepoTest {
 

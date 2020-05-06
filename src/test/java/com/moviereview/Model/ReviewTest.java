@@ -1,4 +1,4 @@
-package com.moviereview.ModelTests;
+package com.moviereview.Model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,14 +9,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
-import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
-import com.moviereview.Model.Review;
-
-@RunWith(JUnitPlatform.class)
 @TestInstance(Lifecycle.PER_CLASS)
 class ReviewTest {
+
+
 
 		Review review;
 		
@@ -44,7 +42,6 @@ class ReviewTest {
 		
 		@Test
 		public void testReviewGetDate(){
-			@SuppressWarnings("deprecation")
 			Date date = new Date(2014, 1, 1);
 			Assertions.assertEquals(date, review.getDateCreated());
 		}
@@ -59,14 +56,7 @@ class ReviewTest {
 			Assertions.assertEquals(7, review.getUserID());
 		}
 		
-		@Test
-		public void testReviewToString(){
-			@SuppressWarnings("deprecation")
-			Date date = new Date(2014, 1, 1);
-			Assertions.assertEquals("Review [id=0, review=" + "this is a review" + ", movieScore=5, dateCreated=" + date
-					+ ", movieID=imdbID, userID=7]", review.toString());
-		}
-		
+	
 
 	}
 
