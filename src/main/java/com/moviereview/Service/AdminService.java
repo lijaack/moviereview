@@ -12,7 +12,7 @@ import com.moviereview.Repository.AdminRepository;
 
 @Service
 public class AdminService {
-	
+	//configured autowired beans in applicaiton context
 	@Autowired
 	AdminRepository adminRepository;
 	

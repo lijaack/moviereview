@@ -10,7 +10,7 @@ import com.moviereview.Repository.ReviewRepository;
 
 @Service
 public class ReviewService {
-	
+	//configured autowired beans in applicaiton context
 	@Autowired
 	ReviewRepository reviewRepository;
 	
