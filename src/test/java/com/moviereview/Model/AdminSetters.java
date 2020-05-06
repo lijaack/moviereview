@@ -10,7 +10,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.runner.RunWith;
 import com.moviereview.Model.Admin;
 
-@RunWith(JUnitPlatform.class)
+
 @TestInstance(Lifecycle.PER_CLASS)
 class AdminSetters {
 

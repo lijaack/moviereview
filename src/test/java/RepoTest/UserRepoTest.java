@@ -1,4 +1,4 @@
-package com.moviereview.RepoTest;
+package RepoTest;
 
 import java.sql.Date;
 import java.util.ArrayList;
