@@ -12,11 +12,12 @@ export class NavbarComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    this.data.currentLoginStatus.subscribe(login => {this.login = login; console.log("my login status is: " + this.login)})
+    this.data.currentLoginStatus.subscribe(login => {this.login = login;})
   }
   logout(){
     localStorage.removeItem("username");
     localStorage.removeItem("password");
+    localStorage.removeItem("userid");
     this.data.changeLogin(false);
   }
 

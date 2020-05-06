@@ -30,8 +30,6 @@ public class ReviewController {
 	@ResponseBody
 	public ResponseEntity<Object> newUReview(@RequestBody Review review,HttpSession session) {
 		try {
-			int userID = (int) session.getAttribute("userID");
-			review.setUserID(userID);
 			this.reviewService.newReview(review);
 			return ResponseEntity.status(HttpStatus.OK).body(review);
 		}catch(PersistenceException e){
@@ -42,7 +40,7 @@ public class ReviewController {
 	@RequestMapping(path="/updateReview", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public void updateReview(@RequestBody Review review) {
-				this.reviewService.updateReview(review);
+			this.reviewService.updateReview(review);
 	}
 	
 	@RequestMapping(path="/getByMovieID", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

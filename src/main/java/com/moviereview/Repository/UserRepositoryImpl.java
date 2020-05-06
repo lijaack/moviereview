@@ -29,7 +29,7 @@ public class UserRepositoryImpl implements UserRepository {
 			System.out.println(id); 
 		}catch(HibernateException e) {
 			tx.rollback();
-//			e.printStackTrace();
+			e.printStackTrace();
 		}	
 	}
 

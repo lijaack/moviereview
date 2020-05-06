@@ -20,7 +20,21 @@ export class LoginComponent implements OnInit {
 
   submit(){
       if(this.username && this.password){
-
+        this.authService.login(this.username, this.password).subscribe(
+          data => {
+            console.log(data)
+            //if success, store user data and reroute
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('password',data.password);
+            localStorage.setItem('userid',data.id.toString());
+            this.data.changeLogin(true);
+            this.router.navigate(["/dashboard"]);
+          },
+          error => {
+            console.log(error)
+            this.error=error.error; 
+          }
+        );
       }else{
         this.error="invalid information";
       }
