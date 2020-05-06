@@ -43,6 +43,7 @@ export class CreateaccountComponent implements OnInit {
           //if success, store user data and reroute
           localStorage.setItem('username', data.username);
           localStorage.setItem('password',data.password);
+          localStorage.setItem('userid',data.id.toString());
           this.data.changeLogin(true);
           this.router.navigate(["/dashboard"]);
         },

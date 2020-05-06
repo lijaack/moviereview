@@ -13,13 +13,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username:string, password:string):Observable<User>{  
-     const body = new HttpParams()
-      .set('username', username)
-      .set('password', password);
+    let body = `username=${username}&password=${password}`;
     return this.http.post<User>(
-      "http://localhost:8080/moviereview/user/newUser", 
+      "http://localhost:8080/moviereview/user/login", 
       body, 
-      {headers: new HttpHeaders({'Content-Type':  'x-www-form-urlencoded'})}
+      {headers: new HttpHeaders({'Content-Type':  'application/x-www-form-urlencoded'})}
     )
   };
 }
