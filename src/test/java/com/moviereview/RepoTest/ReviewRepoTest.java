@@ -1,4 +1,4 @@
-package RepoTest;
+package com.moviereview.RepoTest;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,6 +19,8 @@ import org.mockito.MockitoAnnotations;
 import com.moviereview.Model.Review;
 import com.moviereview.Repository.ReviewRepositoryImpl;
 
+
+@RunWith(JUnitPlatform.class)
 @TestInstance(Lifecycle.PER_CLASS)
 class ReviewRepoTest {
 
@@ -69,9 +71,9 @@ class ReviewRepoTest {
 //		List<Review> MYID = Arrays.asList(
 //				new Review(1, "this is also a review", 6, dateA, "MYID", 8),
 //				new Review(2, "this is MY review", 7, date, "MYID", 9));
-//		Review old = MYID.get(1);
-//		Review review = new Review(2, "NEW REVIEW", 7, date, "MYID", 10);
-//		Mockito.when(dao.updateReview(old)).then;
+//		Review review;
+//		Mockito.when(dao.updateReview(review).getReviewsByMovieId("MYID")).thenReturn(
+//				MYID);
 //
 //		Assertions.assertEquals(2, dao.getReviewsByMovieId("MYID").size());
 //		Assertions.assertEquals(8, dao.getReviewsByMovieId("MYID").get(0).getUserID());

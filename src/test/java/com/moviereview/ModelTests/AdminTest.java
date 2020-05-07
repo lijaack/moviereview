@@ -1,4 +1,4 @@
-package com.moviereview.Model;
+package com.moviereview.ModelTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.runner.RunWith;
+
 import com.moviereview.Model.Admin;
 
-
 @TestInstance(Lifecycle.PER_CLASS)
-class AdminSetters {
+class AdminTest {
 
 		Admin admin;
 		
@@ -20,24 +20,22 @@ class AdminSetters {
 		public void setup() {
 			 admin = new Admin(0, "admin", "password");
 		}
-
+		
 		@Test
-		public void testSetUsername(){
-			admin.setUsername("Jeff");
-			Assertions.assertEquals("Jeff", admin.getUsername());
+		public void testGetUsername(){
+			Assertions.assertEquals("admin", admin.getUsername());
 		}
 		
 		@Test
-		public void testSetPassword(){
-			admin.setPassword("p1");
-			Assertions.assertEquals("p1", admin.getPassword());
+		public void testGetPassword(){
+			Assertions.assertEquals("password", admin.getPassword());
 		}
 		
 		@Test
-		public void testSetID(){
-			admin.setId(1);
-			Assertions.assertEquals(1, admin.getId());
+		public void testGetID(){
+			Assertions.assertEquals(0, admin.getId());
 		}
+	
 
 	}
 
