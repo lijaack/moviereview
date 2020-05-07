@@ -24,12 +24,21 @@ export class MovieComponent implements OnInit {
   reviewText:string;
   review:Review;
   error:string;
+  allReviews:Review[];
   constructor(private reviewService:ReviewService, private movieService:MovieService, private route: ActivatedRoute, private data: DataService) { }
   
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));
     this.getMovie(this.id);
     this.data.currentLoginStatus.subscribe(login => {this.login = login;})
+    this.reviewService.getAllReviews(this.id).subscribe(
+      data =>{
+        console.log(data);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
   }
   getMovie(id:number){
     this.movieService.getMovieByID(id)

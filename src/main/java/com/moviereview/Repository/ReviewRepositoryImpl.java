@@ -16,7 +16,7 @@ import com.moviereview.util.HibernateConfiguration;
 public class ReviewRepositoryImpl implements ReviewRepository {
 
 	@Override
-	public List<Review> getReviewsByMovieId(int id) {
+	public List<Review> getReviewsByMovieId(String movieID) {
 		Session s = null;
 		Transaction tx = null;
 		List<Review> reviews = new ArrayList<>();
@@ -24,8 +24,9 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 		try {
 			s = HibernateConfiguration.getSession();
 			tx = s.beginTransaction();
-
-			reviews = s.createQuery("FROM Review WHERE movieID := id", Review.class).getResultList();
+			System.out.println(movieID);
+			reviews = s.createQuery("FROM Review WHERE movieID = :movieID", Review.class).setParameter("movieID", movieID).getResultList();
+			System.out.println("failed here?");
 			tx.commit();
 		} catch (HibernateException e) {
 			tx.rollback();
@@ -44,8 +45,7 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 		try {
 			s = HibernateConfiguration.getSession();
 			tx = s.beginTransaction();
-
-			reviews = s.createQuery("FROM Review WHERE userID := id", Review.class).getResultList();
+			reviews = s.createQuery("FROM Review WHERE userID = :id", Review.class).setParameter("id", id).getResultList();
 			tx.commit();
 		} catch (HibernateException e) {
 			tx.rollback();

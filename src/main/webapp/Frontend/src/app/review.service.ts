@@ -18,4 +18,13 @@ export class ReviewService {
     }
     return this.http.post<Review>("http://localhost:8080/moviereview/review/newReview", JSON.stringify(review), httpOptions)
   };
+
+  getAllReviews(movieID):Observable<Review[]>{
+    let body = `movieID=${movieID}`;
+    return this.http.post<Review[]>(
+      "http://localhost:8080/moviereview/review/getByMovieID", 
+      body,
+      {headers: new HttpHeaders({'Content-Type':  'application/x-www-form-urlencoded'})}
+    )
+  }
 }
