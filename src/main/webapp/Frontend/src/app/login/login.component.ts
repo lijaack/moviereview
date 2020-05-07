@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
       if(this.username && this.password){
         this.authService.login(this.username, this.password).subscribe(
           data => {
-            console.log(data)
             //if success, store user data and reroute
             localStorage.setItem('username', data.username);
             localStorage.setItem('password',data.password);
@@ -31,7 +30,6 @@ export class LoginComponent implements OnInit {
             this.router.navigate(["/dashboard"]);
           },
           error => {
-            console.log(error)
             this.error=error.error; 
           }
         );

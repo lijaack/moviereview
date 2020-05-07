@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
       this.movieType="Results for " + this.searchField;
       this.movies = movies;
       this.movieResults = this.movies.results
-      console.log(this.movieResults)
     })
   }
 }
