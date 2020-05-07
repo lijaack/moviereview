@@ -24,9 +24,7 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 		try {
 			s = HibernateConfiguration.getSession();
 			tx = s.beginTransaction();
-			System.out.println(movieID);
 			reviews = s.createQuery("FROM Review WHERE movieID = :movieID", Review.class).setParameter("movieID", movieID).getResultList();
-			System.out.println("failed here?");
 			tx.commit();
 		} catch (HibernateException e) {
 			tx.rollback();
@@ -88,4 +86,5 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 			e.printStackTrace();
 		}
 	}
+	
 }
