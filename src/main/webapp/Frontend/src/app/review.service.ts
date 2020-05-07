@@ -27,4 +27,12 @@ export class ReviewService {
       {headers: new HttpHeaders({'Content-Type':  'application/x-www-form-urlencoded'})}
     )
   }
+  updateReview(review:Review):Observable<Review>{
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    return this.http.post<Review>("http://localhost:8080/moviereview/review/updateReview", JSON.stringify(review), httpOptions)
+  };
 }

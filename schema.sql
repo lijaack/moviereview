@@ -21,7 +21,7 @@ create Table reviews(
     dateCreated date not null,
     movieID varchar(16) not null,
     userID integer not null,
-    foreign key (userID) references users(id),
+    foreign key (userID) references users(id) ON DELETE CASCADE,
     constraint userReview unique (userID, movieID)
 );
 

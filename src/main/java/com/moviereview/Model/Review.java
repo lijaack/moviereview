@@ -5,11 +5,13 @@ import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PostLoad;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -36,11 +38,10 @@ public class Review implements Serializable{
     private String movieID;
 	@Column(name="userID")
     private int userID;
-//	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-//			 CascadeType.DETACH, CascadeType.REFRESH})
-//	@JoinColumn(name="users")
-//	private User user;
-
+	@ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+			 CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="user_id")
+	private User user;
 	public Review() {
 		
 	}
@@ -111,17 +112,22 @@ public class Review implements Serializable{
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	@PostLoad
+	public void deleteSensitiveData() {
+	   this.user = new User(this.user.getId(), this.user.getUsername(), this.user.isCritic(), this.user.getBirthday(), this.user.getCountry(), this.user.getGender());
+	}
+
 	@Override
 	public String toString() {
 		return "Review [id=" + id + ", review=" + review + ", movieScore=" + movieScore + ", dateCreated=" + dateCreated
-				+ ", movieID=" + movieID + ", userID=" + userID + "]";
+				+ ", movieID=" + movieID + ", userID=" + userID + ", user="  + user +"]";
 	}
     
 }

@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import com.moviereview.Model.Review;
+import com.moviereview.Model.User;
 import com.moviereview.util.HibernateConfiguration;
 
 
@@ -29,8 +30,7 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 		} catch (HibernateException e) {
 			tx.rollback();
 			e.printStackTrace();
-		}
-
+		} 
 		return reviews;
 	}
 
@@ -61,8 +61,9 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 		try {
 			s = HibernateConfiguration.getSession();
 			tx = s.beginTransaction();
-
-			s.save(review);
+			User user = s.get(User.class, review.getUserID());
+			user.add(review);
+			s.save(user);
 			tx.commit();
 		} catch (HibernateException e) {
 			tx.rollback();
@@ -86,4 +87,5 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 			e.printStackTrace();
 		}
 	}
+	
 }

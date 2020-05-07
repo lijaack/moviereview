@@ -40,8 +40,14 @@ public class ReviewController {
 	
 	@RequestMapping(path="/updateReview", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public void updateReview(@RequestBody Review review) {
+	public ResponseEntity<Object> updateReview(@RequestBody Review review) {
+		try {
 			this.reviewService.updateReview(review);
+			return ResponseEntity.status(HttpStatus.OK).body(review);
+		}catch(PersistenceException e){
+			return ResponseEntity.badRequest().body("You have already reviewed this movie");
+		}
+
 	}
 	
 	@RequestMapping(path="/getByMovieID", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

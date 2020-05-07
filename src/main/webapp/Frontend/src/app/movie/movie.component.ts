@@ -17,7 +17,7 @@ export class MovieComponent implements OnInit {
   movieTitle:string;
   id:number;
   image:string;
-  newReviewForm:boolean = false;
+  reviewForm:boolean = false;
   login:boolean = false
   movieScore:number;
   movieOverview:string;
@@ -25,20 +25,15 @@ export class MovieComponent implements OnInit {
   review:Review;
   error:string;
   allReviews:Review[];
+  myReview:Review;
+  myID = localStorage.getItem("userid");
   constructor(private reviewService:ReviewService, private movieService:MovieService, private route: ActivatedRoute, private data: DataService) { }
   
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));
     this.getMovie(this.id);
     this.data.currentLoginStatus.subscribe(login => {this.login = login;})
-    this.reviewService.getAllReviews(this.id).subscribe(
-      data =>{
-        console.log(data);
-      },
-      error=>{
-        console.log(error);
-      }
-    )
+    this.getAllReviews();
   }
   getMovie(id:number){
     this.movieService.getMovieByID(id)
@@ -49,8 +44,8 @@ export class MovieComponent implements OnInit {
       this.image =  "https://image.tmdb.org/t/p/original"+ this.movie.poster_path;
     })
   }
-  newReviewButton(){
-    this.newReviewForm = !this.newReviewForm;
+  reviewFormButton(){
+    this.reviewForm = !this.reviewForm;
   }
   submitReview(){
     this.error = null;
@@ -67,7 +62,8 @@ export class MovieComponent implements OnInit {
       }
       this.reviewService.createReview(this.review).subscribe(
         data => {
-          console.log(data)
+          this.getAllReviews();
+          this.reviewForm = false;
         },
         error => {
           console.log(error)
@@ -77,5 +73,32 @@ export class MovieComponent implements OnInit {
     } else{
       this.error="incomplete form"
     }
+  }
+  updateReview(){
+    this.reviewService.updateReview(this.myReview).subscribe(
+      data => {
+        this.reviewForm = false;
+      },
+      error => {
+        console.log(error)
+        this.error=error.error; 
+      }
+    );
+  }
+  getAllReviews(){
+    this.reviewService.getAllReviews(this.id).subscribe(
+      data =>{
+        console.log(data);
+        this.allReviews = data;
+        for(let d of data){
+          if(d.userID == this.myID){
+            this.myReview = d;
+          }
+        };
+      },
+      error=>{
+        console.log(error);
+      }
+    )
   }
 }
