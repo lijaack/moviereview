@@ -24,9 +24,9 @@ public class UserRepositoryImpl implements UserRepository {
 		try {
 			s = HibernateConfiguration.getSession();
 			tx = s.beginTransaction();
-			int id = (int) s.save(user);
+			s.save(user);
 			tx.commit();
-			System.out.println(id); 
+	
 		}catch(HibernateException e) {
 			tx.rollback();
 			e.printStackTrace();
