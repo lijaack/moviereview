@@ -49,9 +49,6 @@ export class MovieComponent implements OnInit {
   }
   submitReview(){
     this.error = null;
-    console.log(
-      this.review
-    )
     if(this.movieScore && this.reviewText){
       this.review = {
         review:this.reviewText,
@@ -66,7 +63,6 @@ export class MovieComponent implements OnInit {
           this.reviewForm = false;
         },
         error => {
-          console.log(error)
           this.error=error.error; 
         }
       );
@@ -80,7 +76,6 @@ export class MovieComponent implements OnInit {
         this.reviewForm = false;
       },
       error => {
-        console.log(error)
         this.error=error.error; 
       }
     );
@@ -88,7 +83,6 @@ export class MovieComponent implements OnInit {
   getAllReviews(){
     this.reviewService.getAllReviews(this.id).subscribe(
       data =>{
-        console.log(data);
         this.allReviews = data;
         for(let d of data){
           if(d.userID == this.myID){

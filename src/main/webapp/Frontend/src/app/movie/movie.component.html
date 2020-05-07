@@ -91,6 +91,10 @@
         <a class="waves-effect waves-light btn-small" href="/login">Login to write a review</a>
     </div>
     <div class="row">
+        <div class="col s12 center">
+            <p><b>Reviews</b></p>
+            <hr>
+        </div>
         <div *ngFor="let review of allReviews">
                 <app-review [review]=review></app-review>
         </div>

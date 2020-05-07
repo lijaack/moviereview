@@ -16,7 +16,6 @@ export class MovieCardComponent implements OnInit {
    this.image = "https://image.tmdb.org/t/p/original"+ this.movie.backdrop_path;
   }
   redirect(){
-    console.log("clicking here")
     this.router.navigate(['/movie/'+this.movie.id]);
   }
 }
