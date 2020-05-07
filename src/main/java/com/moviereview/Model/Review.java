@@ -45,22 +45,22 @@ public class Review implements Serializable{
 		
 	}
 	
-    public Review(int id, String review, int movieScore, Date dateCreated, String imdbID, int userID) {
+    public Review(int id, String review, int movieScore, Date dateCreated, String movieID, int userID) {
 		super();
 		this.id = id;
 		this.review = review;
 		this.movieScore = movieScore;
 		this.dateCreated = dateCreated;
-		this.movieID = imdbID;
+		this.movieID = movieID;
 		this.userID = userID;
 	}
     
-    public Review( String review, int movieScore, Date dateCreated, String imdbID, int userID) {
+    public Review( String review, int movieScore, Date dateCreated, String movieID, int userID) {
 		super();
 		this.review = review;
 		this.movieScore = movieScore;
 		this.dateCreated = dateCreated;
-		this.movieID = imdbID;
+		this.movieID = movieID;
 		this.userID = userID;
 	}
 
@@ -100,8 +100,8 @@ public class Review implements Serializable{
 		return movieID;
 	}
 
-	public void setMovieID(String imdbID) {
-		this.movieID = imdbID;
+	public void setMovieID(String movieID) {
+		this.movieID = movieID;
 	}
 
 	public int getUserID() {
