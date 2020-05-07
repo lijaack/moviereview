@@ -41,8 +41,8 @@ public class User implements Serializable{
     private String country;
 	@Column(name="gender")
     private String gender;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="user", cascade= {CascadeType.ALL})
-	private List<Review> reviews;
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy="user", cascade= {CascadeType.ALL})
+//	private List<Review> reviews;
 	
     public User() {
     	

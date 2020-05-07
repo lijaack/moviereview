@@ -81,5 +81,3 @@ src/main/resources/log4j2.properties
 target/classes/credentials.properties
 target/classes/log4j2.properties
 *.log
-/.apt_generated/
-/.apt_generated_tests/
