@@ -54,6 +54,7 @@ public class ReviewController {
 	@ResponseBody
 	public List<Review> getByMovieID(@RequestParam("movieID") String movieID) {
 		 List<Review> reviews = this.reviewService.getReviewsByMovieId(movieID);
+
 		 return reviews;
 	}
 	
