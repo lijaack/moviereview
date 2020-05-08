@@ -18,4 +18,5 @@ export class MovieCardComponent implements OnInit {
   redirect(){
     this.router.navigate(['/movie/'+this.movie.id]);
   }
+
 }

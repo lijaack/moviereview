@@ -12,7 +12,7 @@ import { SearchMoviesComponent } from './search-movies/search-movies.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule , HttpClient}    from '@angular/common/http';
 import { MovieComponent } from './movie/movie.component';
 import { ReviewComponent } from './review/review.component';
 @NgModule({
@@ -35,7 +35,7 @@ import { ReviewComponent } from './review/review.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
