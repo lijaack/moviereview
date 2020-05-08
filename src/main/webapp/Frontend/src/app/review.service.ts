@@ -16,13 +16,13 @@ export class ReviewService {
         'Content-Type':  'application/json'
       })
     }
-    return this.http.post<Review>("http://localhost:8080/moviereview/review/newReview", JSON.stringify(review), httpOptions)
+    return this.http.post<Review>("http://3.101.75.179:8085/moviereview/review/newReview", JSON.stringify(review), httpOptions)
   };
 
   getAllReviews(movieID):Observable<Review[]>{
     let body = `movieID=${movieID}`;
     return this.http.post<Review[]>(
-      "http://localhost:8080/moviereview/review/getByMovieID", 
+      "http://3.101.75.179:8085/moviereview/review/getByMovieID", 
       body,
       {headers: new HttpHeaders({'Content-Type':  'application/x-www-form-urlencoded'})}
     )
@@ -33,6 +33,6 @@ export class ReviewService {
         'Content-Type':  'application/json'
       })
     }
-    return this.http.post<Review>("http://localhost:8080/moviereview/review/updateReview", JSON.stringify(review), httpOptions)
+    return this.http.post<Review>("http://3.101.75.179:8085/moviereview/review/updateReview", JSON.stringify(review), httpOptions)
   };
 }

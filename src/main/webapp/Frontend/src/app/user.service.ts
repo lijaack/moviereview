@@ -15,6 +15,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
   createUser(user:User):Observable<User>{    
-    return this.http.post<User>("http://localhost:8080/moviereview/user/newUser", JSON.stringify(user), this.httpOptions)
+    return this.http.post<User>("http://3.101.75.179:8085/moviereview/user/newUser", JSON.stringify(user), this.httpOptions)
   };
 }

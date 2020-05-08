@@ -13,7 +13,7 @@ export class AuthService {
   login(username:string, password:string):Observable<User>{  
     let body = `username=${username}&password=${password}`;
     return this.http.post<User>(
-      "http://localhost:8080/moviereview/user/login", 
+      "http://3.101.75.179:8085/moviereview/user/login", 
       body, 
       {headers: new HttpHeaders({'Content-Type':  'application/x-www-form-urlencoded'})}
     )
