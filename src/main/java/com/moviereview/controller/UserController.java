@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.moviereview.Model.User;
 import com.moviereview.Service.UserService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://moviereviewapp1.s3-website-us-west-1.amazonaws.com"})
 @RestController
 @RequestMapping(path="/user")
 public class UserController {

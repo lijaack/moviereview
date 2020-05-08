@@ -21,7 +21,7 @@ import com.moviereview.Model.Admin;
 import com.moviereview.Model.User;
 import com.moviereview.Service.AdminService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://moviereviewapp1.s3-website-us-west-1.amazonaws.com"})
 @RestController
 @RequestMapping(path="/admin")
 public class AdminController {

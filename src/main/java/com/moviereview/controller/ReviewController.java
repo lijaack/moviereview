@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.moviereview.Model.Review;
 import com.moviereview.Service.ReviewService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://moviereviewapp1.s3-website-us-west-1.amazonaws.com"})
 @RestController
 @RequestMapping(path="/review")
 public class ReviewController {
