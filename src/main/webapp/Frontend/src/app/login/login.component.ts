@@ -3,6 +3,7 @@ import { DataService } from "../data.service";
 import {User} from '../interfaces/user';
 import {AuthService} from '../auth.service'
 import {Router} from "@angular/router"
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,8 @@ import {Router} from "@angular/router"
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username:string = null;
-  password:string = null;
+  username:string = "";
+  password:string = "";
   error:string = null;
   constructor(private authService:AuthService, private data: DataService, private router: Router) { }
 
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   submit(){
       if(this.username && this.password){
-        this.authService.login(this.username, this.password).subscribe(
+        this.authService.login(this.username.trim(), this.password.trim()).subscribe(
           data => {
             //if success, store user data and reroute
             localStorage.setItem('username', data.username);
@@ -38,5 +39,5 @@ export class LoginComponent implements OnInit {
       }
     
   }
-
+ 
 }
