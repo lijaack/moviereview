@@ -14,9 +14,14 @@ export class MovieService {
     
     return this.http.get<Movie[]>(this.trendingMovie);
   };
-
+  searchMovie(movieName:string):Observable<Movie[]>{
+    let movieAPI = 'https://api.themoviedb.org/3/search/movie?api_key=24991af107f15c42f95f9e9b1f7073b6&language=en-US&query='+movieName+'&page=1&include_adult=false'; 
+    return this.http.get<Movie[]>(movieAPI);
+  };
   getMovieByID(id:number):Observable<Movie>{
     
     return this.http.get<Movie>("https://api.themoviedb.org/3/movie/"+ id +"?api_key=24991af107f15c42f95f9e9b1f7073b6&language=en-US");
   }
+
+
 }

@@ -1,4 +1,4 @@
-package RepoTest;
+package com.moviereview.RepoTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +19,7 @@ import com.moviereview.Model.Admin;
 import com.moviereview.Repository.AdminRepositoryImpl;
 
 
+@RunWith(JUnitPlatform.class)
 @TestInstance(Lifecycle.PER_CLASS)
 class AdminRepoTest {
 
@@ -44,20 +45,6 @@ class AdminRepoTest {
 
 		Assertions.assertEquals(2, dao.adminLogin("admin2", "password2").getId());
 	}
-	@Test
-	public void testNullLogin() {
-		Mockito.when(dao.adminLogin("admin5", "password5")).thenReturn(
-				null);
-
-		Assertions.assertEquals(null, dao.adminLogin("admin5", "password5"));
-	}
-	@Test
-	public void testWrongPassword() {
-		Mockito.when(dao.adminLogin("admin2", "password3")).thenReturn(
-				null);
-
-		Assertions.assertEquals(null, dao.adminLogin("admin2", "password3"));
-	}
 	
 	@Test
 	public void testGetAllAdmins() {
@@ -66,7 +53,7 @@ class AdminRepoTest {
 				new Admin(1, "admin2", "password"));
 		Mockito.when(dao.getAllAdmins()).thenReturn(
 				requests);
-		
+		System.out.println(requests);
 		Assertions.assertEquals(2,dao.getAllAdmins().size());
 		Assertions.assertEquals("admin1",dao.getAllAdmins().get(0).getUsername());
 		Assertions.assertEquals("admin2",dao.getAllAdmins().get(1).getUsername());

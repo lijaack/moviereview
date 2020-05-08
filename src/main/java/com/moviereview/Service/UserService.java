@@ -11,7 +11,7 @@ import com.moviereview.Repository.UserRepository;
 
 @Service
 public class UserService {
-	//configured autowired beans in applicaiton context
+	
 	@Autowired
 	UserRepository userRepository;
 	

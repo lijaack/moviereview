@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,10 +15,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties(value= {"reviews"})
 public class User implements Serializable{
 	/**
 	 * 
@@ -31,6 +36,7 @@ public class User implements Serializable{
 	private int id;
 	@Column(name="username", unique=true)
     private String username;
+	@Basic(fetch = FetchType.LAZY)
 	@Column(name="password")
     private String password;
 	@Column(name="isCritic")
@@ -59,7 +65,17 @@ public class User implements Serializable{
 		this.country = country;
 		this.gender = gender;
 	}
-    
+    public User(int id, String username, boolean isCritic, Date birthday, String country,
+			String gender) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.isCritic = isCritic;
+		this.birthday = birthday;
+		this.country = country;
+		this.gender = gender;
+	}
+
     public User( String username, String password, boolean isCritic, Date birthday, String country,
 			String gender) {
 		super();
@@ -141,25 +157,25 @@ public class User implements Serializable{
 		this.gender = gender;
 	}
 	
-//	public List<Review> getReviews() {
-//		return reviews;
-//	}
-//
-//	public void setCourses(List<Review> courses) {
-//		this.reviews = courses;
-//	}
-//	
-//	// add convenience methods for bi-directional relationship
-//	
-//	public void add(Review tempReview) {
-//		
-//		if (reviews == null) {
-//			reviews = new ArrayList<>();
-//		}
-//		reviews.add(tempReview);
-//		tempReview.setUser(this);
-//	}
-//
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+	
+	// add convenience methods for bi-directional relationship
+	
+	public void add(Review tempReview) {
+		
+		if (reviews == null) {
+			reviews = new ArrayList<>();
+		}
+		reviews.add(tempReview);
+		tempReview.setUser(this);
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", isCritic=" + isCritic

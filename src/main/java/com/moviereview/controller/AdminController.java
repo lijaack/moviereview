@@ -36,7 +36,7 @@ public class AdminController {
 			this.adminService.newAdmin(admin);
 			return adminLogin(admin.getUsername(), admin.getPassword(), session);
 		}catch(PersistenceException e){
-			return ResponseEntity.badRequest().body("username already taken");
+			return ResponseEntity.badRequest().body("username already takened");
 		}	
 	}
 	

@@ -27,16 +27,16 @@ export class CreateaccountComponent implements OnInit {
   }
   submit(){
     this.error=null;
-    if(this.month.length!=2 || this.year.length!=4 || this.day.length!= 2){
+    if(this.month.trim().length!=2 || this.year.trim().length!=4 || this.day.trim().length!= 2){
       this.error = "invalid date format"
     }else {
       this.newUser = {
-        name:this.name,
-        username: this.username,
-        password: this.password,
-        country: this.country,
-        gender: this.gender,
-        birthday: this.year + "-" + this.month + "-" +this.day
+        name:this.name.trim(),
+        username: this.username.trim(),
+        password: this.password.trim(),
+        country: this.country.trim(),
+        gender: this.gender.trim(),
+        birthday: this.year.trim() + "-" + this.month.trim() + "-" +this.day.trim()
       }
       this.userService.createUser(this.newUser).subscribe(
         data => {

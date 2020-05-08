@@ -1,12 +1,29 @@
 <div class="container">
     <div class="row">
         <div class="col s12 center">
-            <h3>Trending movies</h3>
+            <form>
+                <div class="input-field col s6">
+                    <input  [(ngModel)]="searchField" id="searchField" name="searchField" type="text">
+                    <label for="searchField">search</label>
+                    <span class="prefix" style="cursor:pointer;"(click)="searchMovie()">  <i class="material-icons" >search</i>
+                    </span>
+                </div>
+            </form>
+        
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 center">
+            <h3>{{movieType}}</h3>
         </div>
     </div>
     <div class="row">
-        <div *ngFor="let movie of movieResults" class="col s4">
-            <app-movie-card [movie]=movie></app-movie-card>
+        <div *ngFor="let movie of movieResults" >
+            <div *ngIf="movie.backdrop_path" class="col s4">
+                <app-movie-card  [movie]=movie></app-movie-card>
+
+            </div>
         </div>
     </div>
     

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,21 +40,28 @@ public class ReviewController {
 	
 	@RequestMapping(path="/updateReview", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public void updateReview(@RequestBody Review review) {
+	public ResponseEntity<Object> updateReview(@RequestBody Review review) {
+		try {
 			this.reviewService.updateReview(review);
+			return ResponseEntity.status(HttpStatus.OK).body(review);
+		}catch(PersistenceException e){
+			return ResponseEntity.badRequest().body("You have already reviewed this movie");
+		}
+
 	}
 	
 	@RequestMapping(path="/getByMovieID", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public List<Review> getByMovieID(@RequestBody String id) { //changed to string by Colin
-		 List<Review> reviews = this.reviewService.getReviewsByMovieId(id);
+	public List<Review> getByMovieID(@RequestParam("movieID") String movieID) {
+		 List<Review> reviews = this.reviewService.getReviewsByMovieId(movieID);
+
 		 return reviews;
 	}
 	
 	@RequestMapping(path="/getByUserID", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public List<Review> getByUserID(@RequestBody int id) {
-		List<Review> reviews = this.reviewService.getReviewsByUserId(id);
+	public List<Review> getByUserID(@RequestParam("movieID") int userID) {
+		List<Review> reviews = this.reviewService.getReviewsByUserId(userID);
 		return reviews;
 	}
 	
