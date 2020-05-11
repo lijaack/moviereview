@@ -1,0 +1,38 @@
+Group Name: JC3 
+
+Movie review site
+A movie review site that aggregates movie reviews from Reviewers and general public.
+
+Features:
+Users
+All users
+Change passwords
+Admins
+Approve or Deny applications for General Audience accounts to be upgraded to Critic accounts 
+Gets alerts on reported reviews and decide to delete if the reviews or trolls
+General Audience
+Submit reviews for movie with score
+App points to a review for accuracy, informative, or quality (app or other people who like their review?) (what does this bullet even mean colin?)
+Delete their own reviews
+Critics
+Same function as other reviewers
+Allow users to rate Critics
+Display all movies they’ve reviewed
+Shows they are a critic
+
+Movies
+Display general movie info (year released, rating, etc.)
+Totals review scores from critics
+Totals review scores from general public
+Shows the number of negative and positive reviews based on date with a graph
+Show demographic range of a movie based on age, state/country,  (and more. Otherwise the data is worthless. possibly country)
+
+Reviews
+Name of reviewer
+Date review was created
+Score 1-10
+Report troll/inflammatory reviews
+Score sent to movie aggregate score based on type of user
+Displays if user is general audience or Critic
+
+
